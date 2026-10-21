@@ -41,12 +41,12 @@ This section contains my practice code organised by topic. The folders below ref
 
 | Topic                   | What I'm Practising                                     | Folder                                          |
 | ----------------------- | ------------------------------------------------------- | ----------------------------------------------- |
-| Flask Forms             | Working with forms and user input                       | [`forms`](./forms/)                             |
-| Jinja2                  | Rendering dynamic content using templates               | [`jinja 2`](./jinja%202/)                       |
-| Dynamic Templating      | Generating webpage content dynamically                  | [`dynamic templating`](./dynamic%20templating/) |
-| Flash Messages with WTF | Practising flash messages and WTF-related form concepts | [`flash wtf`](./flash%20wtf/)                   |
-| Flash Messages          | Displaying feedback messages to users                   | [`flash`](./flash/)                             |
-| Login Practice          | Exploring login-related Flask concepts                  | [`login`](./login/)                             |
+| Flask Forms             | Working with forms and user input                       | [`Flask basics`](./Flask basics/)               |   
+| Jinja2                  | Rendering dynamic content using templates               |                      
+| Dynamic Templating      | Generating webpage content dynamically                  |  
+| Flash Messages with WTF | Practising flash messages and WTF-related form concepts |              
+| Flash Messages          | Displaying feedback messages to users                   |                 
+| Login Practice          | Exploring login-related Flask concepts                  |                     
 | Projects                | Building practical Flask applications                   | [`Projects`](./Projects/)                       |
 
 *I'll update this section as I add new topics and improve the organisation of my code.*
