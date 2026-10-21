@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Calculator Page{% endblock %}
+
+{% block content %}
+<h1>Percentage Calculator of Marks</h1>
+<p><b>Total Marks:-</b> {{ total_marks }}</p><br>
+<p><b>Percentage:-</b> {{ "%.1f" | format(percentage) }}%</p>
+
+<main>
+    <form action="/">
+        <input type="submit" value="Home Page">
+    </form>
+</main>
+{% endblock %}

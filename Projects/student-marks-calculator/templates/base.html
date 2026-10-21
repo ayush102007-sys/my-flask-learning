@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}Home Page{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>Marks & Percentage Calculator</h1>
+    </header>
+
+    <main>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for msg in messages %}
+        <p>{{ msg }}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {% block content %}
+        <form action="/marks">
+        <div>
+            <input type="submit" value="Go To Marks Page">
+        </div>
+        </form>
+        {% endblock %}
+    </main>
+
+    <footer>
+        @Copyright 2026
+    </footer>
+</body>
+</html>

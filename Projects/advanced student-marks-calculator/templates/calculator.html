@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Calculator Page{% endblock %}
+
+{% block content %}
+<header>
+    <h2>Calculator Page</h2>
+</header>
+
+<main>
+    <div>
+        {% for index, sub in enumerate(subject_name) %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Subject Name</th>
+                    <th>Total Marks</th>
+                    <th>Marks Obtained</th>
+                    <th>Grade/Remarks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{sub}}</td>
+                    <td>{{full_marks[index]}}</td>
+                    <td>{{marks_obtained[index]}}</td>
+                    <td>
+                        {% if 80 < marks_obtained[index] < 100 %} <p>{{grade_sys["Excellent"]}} | <b>Excellent</b></p>
+                            {% elif 60 < marks_obtained[index] < 79 %} <p>{{grade_sys["Very Good"]}} | <b>Very Good</b>
+                                </p>
+                                {% elif 45 < marks_obtained[index] < 59 %} <p>{{grade_sys["Good"]}} | <b>Good</b></p>
+                                    {% elif 30 < marks_obtained[index] < 44 %} <p>{{grade_sys["Satisfactory"]}} |
+                                        <b>Satisfactory</b></p>
+                                        {% else %}
+                                        <p>{{grade_sys["Disqualified"]}} | <b>Disqualified</b></p>
+                                        {% endif %}
+
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2">Pass/Fail</td>
+                    <td>
+                        {% if marks_obtained[index] < 30 %}
+                            <p>Failed</p>
+                        {% else %}
+                            <p>Passed</p>
+                        {% endif %}
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        {% endfor %}
+    </div>
+
+    <fieldset>
+        <legend>Results</legend>
+        <p><b>Total Marks:</b> {{ total_marks }}</p>
+        <p><b>Percentage:</b> {{ "%.1f"|format(percentage) }}%</p>
+        <p><b>Final Remarks:</b>
+            {% if percentage < 30 %}
+            <p><b>FAILED</b></p>
+            {% else %}
+            <p><b>PASSED</b></p>
+            {% endif %}
+        </p>
+    </fieldset>
+</main>
+{% endblock %}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {% block title %}My Website{% endblock %} </title>
+    <style>
+        :root {
+            font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+            color: #1f2937;
+            background: #f4f7fb;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1rem clamp(1.25rem, 6vw, 5rem);
+            color: #fff;
+            background: linear-gradient(120deg, #173b70, #2563a6);
+            box-shadow: 0 3px 14px rgb(20 45 80 / 16%);
+        }
+
+        header h2 {
+            margin: 0;
+            font-size: 1.4rem;
+            letter-spacing: 0.02em;
+        }
+
+        nav {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        nav a {
+            padding: 0.55rem 0.9rem;
+            border-radius: 0.5rem;
+            color: #fff;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 160ms ease, transform 160ms ease;
+        }
+
+        nav a:hover,
+        nav a:focus-visible {
+            background: rgb(255 255 255 / 16%);
+            transform: translateY(-1px);
+            outline: none;
+        }
+
+        footer {
+            margin-top: 3rem;
+            padding: 1.25rem;
+            color: #64748b;
+            background: #e9eef5;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 520px) {
+            header {
+                align-items: flex-start;
+                flex-direction: column;
+                padding-block: 1rem;
+            }
+
+            nav a {
+                padding-inline: 0.65rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h2>My Site</h2>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+        </nav>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+    <footer>
+        <p>@Copyright All Rights Reserved</p>
+    </footer>
+</body>
+
+</html>

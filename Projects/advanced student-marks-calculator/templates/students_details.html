@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Student Details{% endblock %}
+
+{% block content %}
+<header>
+    <h2>Student Information</h2>
+</header>
+
+<main>
+    <p>
+        Add Your Personal Details 
+    </p>
+    <form action="/subjects" method="post">
+        <div>
+            <label for="name">Student Name</label>
+            <input type="text" name="name" id="name" required>
+        </div>
+
+        <div>
+            <label for="class">Class</label>
+            <input type="text" name="class" id="class" required>
+        </div>
+
+        <div>
+            <label for="roll">Roll No.</label>
+            <input type="text" name="roll" id="roll" required>
+        </div>
+
+        <div>
+            <label for="exam">Examination Name</label>
+            <input type="text" name="exam" id="exam" required>
+        </div>
+
+        <div>
+            <label for="num">No. of Subjects</label>
+            <input type="number" name="subject_count" id="count"
+            min="1" max="20" required>
+        </div>
+
+        <div>
+            <input type="submit" value="Continue >">
+        </div>
+    </form>
+</main>
+{% endblock %}

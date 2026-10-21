@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}Home Page{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>Calculate Your Marks</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        <form action="/student" method="post">
+            <input type="submit" value="Start Calculator >">
+        </form>
+
+        {% endblock %}
+    </main>
+</body>
+</html>

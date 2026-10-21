@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+<style>
+    .about-page {
+        --about-ink: #172033;
+        --about-muted: #657086;
+        --about-accent: #3563e9;
+        color: var(--about-ink);
+        font-family: inherit;
+    }
+
+    .about-page * {
+        box-sizing: border-box;
+    }
+
+    .about-hero {
+        padding: clamp(3rem, 8vw, 6.5rem) 1.5rem;
+        text-align: center;
+        background: linear-gradient(135deg, #eef3ff, #f8faff 60%, #e8f5ff);
+    }
+
+    .about-inner {
+        width: min(100%, 1080px);
+        margin: 0 auto;
+    }
+
+    .about-eyebrow {
+        margin: 0 0 .75rem;
+        color: var(--about-accent);
+        font-size: .8rem;
+        font-weight: 700;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+    }
+
+    .about-hero h1 {
+        max-width: 780px;
+        margin: 0 auto 1rem;
+        font-size: clamp(2.25rem, 6vw, 4rem);
+        line-height: 1.08;
+    }
+
+    .about-hero p {
+        max-width: 680px;
+        margin: 0 auto;
+        color: var(--about-muted);
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        line-height: 1.7;
+    }
+
+    .about-content {
+        padding: clamp(3rem, 7vw, 5.5rem) 1.5rem;
+    }
+
+    .about-story {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: clamp(2rem, 6vw, 5rem);
+        align-items: center;
+    }
+
+    .about-story h2,
+    .about-values h2 {
+        margin: 0 0 1rem;
+        font-size: clamp(1.7rem, 3vw, 2.35rem);
+    }
+
+    .about-story p {
+        margin: 0 0 1rem;
+        color: var(--about-muted);
+        line-height: 1.8;
+    }
+
+    .about-highlight {
+        padding: 2rem;
+        border: 1px solid #e5eaf3;
+        border-radius: 1.25rem;
+        background: #f8faff;
+    }
+
+    .about-highlight h3 {
+        margin: 0 0 .75rem;
+        font-size: 1.25rem;
+    }
+
+    .about-highlight p {
+        margin: 0;
+    }
+
+    .about-values {
+        margin-top: clamp(3rem, 7vw, 5.5rem);
+        text-align: center;
+    }
+
+    .about-values-intro {
+        max-width: 650px;
+        margin: 0 auto 2rem;
+        color: var(--about-muted);
+        line-height: 1.7;
+    }
+
+    .about-value-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.25rem;
+        text-align: left;
+    }
+
+    .about-value-card {
+        padding: 1.5rem;
+        border: 1px solid #e5eaf3;
+        border-radius: 1rem;
+        background: #fff;
+    }
+
+    .about-value-card h3 {
+        margin: 0 0 .5rem;
+        font-size: 1.1rem;
+    }
+
+    .about-value-card p {
+        margin: 0;
+        color: var(--about-muted);
+        line-height: 1.7;
+    }
+
+    @media (max-width: 700px) {
+        .about-story,
+        .about-value-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<main class="about-page">
+    <header class="about-hero">
+        <div class="about-inner">
+            <p class="about-eyebrow">About our store</p>
+            <h1>Technology that works for you.</h1>
+            <p>We make it easier to find the right laptop for work, study, creativity, and everything in between.</p>
+        </div>
+    </header>
+
+    <section class="about-content" aria-labelledby="about-story-title">
+        <div class="about-inner">
+            <div class="about-story">
+                <div>
+                    <h2 id="about-story-title">A better way to choose your next laptop</h2>
+                    <p>At Laptop Store, we believe great technology should feel simple to shop for. Our goal is to bring dependable laptops and useful guidance together, so you can choose with confidence.</p>
+                    <p>Whether you are upgrading your home setup, heading to class, or building your next big idea, we are here to help you find a device that fits your needs and your budget.</p>
+                </div>
+                <aside class="about-highlight" aria-label="Our promise">
+                    <h3>Here for the long run</h3>
+                    <p>From comparing features to getting started with your new device, we aim to make every step clear, helpful, and focused on you.</p>
+                </aside>
+            </div>
+
+            <section class="about-values" aria-labelledby="about-values-title">
+                <h2 id="about-values-title">What matters to us</h2>
+                <p class="about-values-intro">A good shopping experience is about more than the specs. It is about finding the right fit and knowing what to expect.</p>
+                <div class="about-value-grid">
+                    <article class="about-value-card">
+                        <h3>Thoughtful selection</h3>
+                        <p>A range of options for different tasks, preferences, and budgets.</p>
+                    </article>
+                    <article class="about-value-card">
+                        <h3>Clear information</h3>
+                        <p>Helpful product details that make comparing laptops easier.</p>
+                    </article>
+                    <article class="about-value-card">
+                        <h3>Customer-first service</h3>
+                        <p>Friendly support to help you feel good about your purchase.</p>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </section>
+</main>
+{% endblock %}

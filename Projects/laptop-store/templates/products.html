@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        margin: 0;
+        background-color: #111;
+        color: #f5f5f5;
+        font-family: Arial, sans-serif;
+    }
+
+    header {
+        padding: 2rem 1rem 1rem;
+        text-align: center;
+    }
+
+    main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+
+    .product-navigation {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background-color: #202020;
+        border: 1px solid #383838;
+        border-radius: 10px;
+    }
+
+    .product-navigation h2 {
+        margin: 0 0 0.75rem;
+        font-size: 1.1rem;
+    }
+
+    .product-navigation ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .product-navigation a {
+        display: inline-block;
+        padding: 0.55rem 0.8rem;
+        border-radius: 5px;
+        background-color: #303030;
+        color: #ffc107;
+        text-decoration: none;
+    }
+
+    .product-navigation a:hover,
+    .product-navigation a:focus-visible {
+        background-color: #383838;
+        text-decoration: underline;
+    }
+
+    .product-navigation a:focus-visible,
+    main form > div:target {
+        outline: 2px solid #ffc107;
+        outline-offset: 3px;
+    }
+
+    main form {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.25rem;
+    }
+
+    main form > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.9rem;
+        padding: 1rem;
+        background-color: #202020;
+        border: 1px solid #383838;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    main form img {
+        width: 100%;
+        height: 180px;
+        object-fit: contain;
+        border-radius: 6px;
+    }
+
+    main form b {
+        font-size: 1.1rem;
+    }
+
+    main form input[type="submit"] {
+        margin-top: auto;
+        padding: 0.7rem 1rem;
+        border: 0;
+        border-radius: 5px;
+        background-color: #e0a800;
+        color: #171717;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    main form input[type="submit"]:hover {
+        background-color: #ffc107;
+    }
+</style>
+
+<header>
+    <h1>Welcome To Our Products</h1>
+</header>
+
+<main>
+    <form action="/cart" method="post">
+        <div id="asus-vivobook" tabindex="-1">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt_hI_MNkLgzIDW5O1CbOvI3fkst5a4ff5gXYlDnuzJw&s"
+                alt="asus" width="300" height="200"><b>Asus VivoBook</b>
+            <input type="submit" value="Add To Cart">
+        </div>
+        <div id="lenovo-legion" tabindex="-1">
+            <img src="https://rukminim1.flixcart.com/image/1366/1366/xif0q/computer/x/e/i/-original-imahherqt6pbwhvy.jpeg?q=90"
+                alt="lenevo" width="300" height="200"><b>Lenevo Legion</b>
+            <input type="submit" value="Add To Cart">
+        </div>
+        <div id="dell" tabindex="-1">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrmoHDsc_3fBPW2zSvAN_nGhQ9j-A-hCxjGburOU-5NahjTTZibMRtrTCT&s=10"
+                alt="dell" width="300" height="200"><b>Dell</b>
+            <input type="submit" value="Add To Cart">
+        </div>
+        <div id="hp" tabindex="-1">
+            <img src="https://rukminim1.flixcart.com/image/1366/1366/xif0q/computer/u/8/e/-enriched-transparent-original-imahg533tfgskxky.png?q=90"
+                alt="hp" width="300" height="200"><b>HP</b>
+            <input type="submit" value="Add To Cart">
+        </div>
+        <div id="acer-aspire-lite" tabindex="-1">
+            <img src="https://m.media-amazon.com/images/I/513p8BwV-RL._AC_UF1000,1000_QL80_.jpg" alt="acer" width="300"
+                height="200"><b>Acer Aspire Lite</b>
+            <input type="submit" value="Add To Cart">
+        </div>
+    </form>
+</main>
+{% endblock %}

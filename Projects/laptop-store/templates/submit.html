@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Success</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f6f9fc 0%, #e9f1f7 100%);
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 480px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            padding: 32px 28px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0 0 14px;
+            font-size: 2rem;
+            color: #2d3748;
+        }
+
+        p {
+            margin: 0;
+            font-size: 1.08rem;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .username {
+            font-weight: 700;
+            color: #1f6feb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Login Successful</h1>
+            <p><span class="username">{{ username }}</span>, you've logged in successfully!</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Subject and Marks Entry{% endblock %}
+
+{% block content %}
+<header>
+    <h2>Subject and Marks Entry</h2>
+    <p>Welcome, {{ name }} !</p>
+</header>
+
+<main>
+    <form action="/results" method="post">
+        <input type="hidden" name="name" value="{{ name }}">
+
+        {% for i in range(subject_count) %}
+        <fieldset>
+            <legend>Subject {{ i + 1 }}</legend>
+
+            <label>Subject Name:</label>
+            <input type="text" name="subject_name" required>
+
+            <br><br>
+
+            <label>Marks Obtained:</label>
+            <input type="number" name="marks" min="0" required>
+
+            <br><br>
+
+            <label>Maximum Marks:</label>
+            <input type="number" name="maximum_marks" min="1" value="100" required>
+        </fieldset>
+        <br>
+        {% endfor %}
+
+        <button type="submit">Calculate Results ></button>
+    </form>
+</main>
+{% endblock %}
