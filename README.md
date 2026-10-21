@@ -118,12 +118,12 @@ I use online tutorials, documentation, and practical exercises to support my lea
 
 | Topic               | Resource                                     |
 | ------------------- | -------------------------------------------- |
-| Python Fundamentals | [Add YouTube link here](#learning-resources) |
-| Flask Basics        | [Add YouTube link here](#learning-resources) |
-| Flask Forms         | [Add YouTube link here](#learning-resources) |
-| Jinja2 Templating   | [Add YouTube link here](#learning-resources) |
-| HTML & CSS          | [Add YouTube link here](#learning-resources) |
-| Git & GitHub        | [Add YouTube link here](#learning-resources) |
+| Python Fundamentals | [https://youtu.be/qQEigNVHlX8?si=i5fn3oBrY6vG7om7](#learning-resources) |
+| Flask Basics        | [https://youtu.be/QZfaRHzWM0k?si=aPTLSwG1oykv6FuP](#learning-resources) |
+| Flask Forms         | [https://youtu.be/QZfaRHzWM0k?si=aPTLSwG1oykv6FuP](#learning-resources) |
+| Jinja2 Templating   | [https://youtu.be/QZfaRHzWM0k?si=aPTLSwG1oykv6FuP](#learning-resources) |
+| HTML                | [https://youtu.be/k2DSi1zGEc8?si=mDLtNA33jsAmtpvZ](#learning-resources) |
+| Git & GitHub        | [https://youtu.be/AB3J8ufDYHQ?si=kVBvph_2RD0JhXb9](#learning-resources) |
 
 ### Official Documentation
 
@@ -196,7 +196,7 @@ This is my personal learning repository, where I document my progress in Python 
 
 **GitHub:** [@ayush102007-sys](https://github.com/ayush102007-sys)
 
-**Repository:** [flask-projects](https://github.com/ayush102007-sys/flask-projects)
+**Repository:** [my-flask-learning](https://github.com/ayush102007-sys/my-flask-learning)
 
 I'm continuously learning, practising, and improving one project at a time.
 
