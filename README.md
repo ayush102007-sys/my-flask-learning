@@ -41,7 +41,7 @@ This section contains my practice code organised by topic. The folders below ref
 
 | Topic                   | What I'm Practising                                     | Folder                                          |
 | ----------------------- | ------------------------------------------------------- | ----------------------------------------------- |
-| Flask Forms             | Working with forms and user input                       | [`Flask basics`](./Flask basics/)               |   
+| Flask Forms             | Working with forms and user input                       | [`Flask basics`](./basics/)               |   
 | Jinja2                  | Rendering dynamic content using templates               |                      
 | Dynamic Templating      | Generating webpage content dynamically                  |  
 | Flash Messages with WTF | Practising flash messages and WTF-related form concepts |              
