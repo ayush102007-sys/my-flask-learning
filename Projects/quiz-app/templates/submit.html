@@ -212,6 +212,40 @@
         font-weight: 650;
     }
 
+    .result-summary {
+        margin: 1.5rem auto;
+        padding: 1.25rem 1.5rem;
+        max-width: 620px;
+        border: 1px solid var(--quiz-border, #dbe3ee);
+        border-radius: 1rem;
+        background: linear-gradient(135deg, #fff 0%, var(--quiz-red-bg, #fff1f2) 100%);
+        box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+        text-align: center;
+    }
+
+    .result-summary p {
+        margin: 0.65rem 0;
+        color: var(--quiz-text, #263244);
+        line-height: 1.5;
+    }
+
+    .result-summary .submission-message {
+        color: var(--quiz-red, #b42336);
+        font-size: 1.15rem;
+        font-weight: 700;
+    }
+
+    .result-summary .quiz-score {
+        font-size: 1.05rem;
+    }
+
+    .result-summary .quiz-percentage {
+        margin-top: 0.9rem;
+        color: var(--quiz-red, #b42336);
+        font-size: 1.35rem;
+        font-weight: 750;
+    }
+
     @media (max-width: 520px) {
         header,
         main {
@@ -238,9 +272,11 @@
     }
 </style>
 
-<p>Answers submitted successfully !</p>
-<p><b>Quiz Results</b> -> {{ score }} / {{ questions|length }}</p>
-<p><b>Percentage -> {{ "%.0f"|format(percentage) }}%</b></p>
+<div class="result-summary">
+    <p class="submission-message">Answers submitted successfully!</p>
+    <p class="quiz-score"><b>Quiz Results</b> &mdash; {{ score }} / {{ questions|length }}</p>
+    <p class="quiz-percentage"><b>Percentage &mdash; {{ "%.0f"|format(percentage) }}%</b></p>
+</div>
 
 <hr>
 

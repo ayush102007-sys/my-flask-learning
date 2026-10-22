@@ -39,14 +39,105 @@
         text-align: center;
     }
 
+    header h1 {
+        margin: 0 0 0.5rem;
+        font-size: clamp(2rem, 7vw, 3.25rem);
+        letter-spacing: -0.04em;
+        background: linear-gradient(120deg, var(--quiz-blue-dark), #7c3aed);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
     header p {
         margin: 0 0 1.25rem;
         color: var(--quiz-muted);
         font-size: 0.95rem;
     }
 
+    header p:first-of-type {
+        margin-bottom: 0.35rem;
+        color: var(--quiz-blue-dark);
+        font-size: 1.05rem;
+        font-weight: 700;
+    }
+
+    footer {
+        padding: 1.75rem 1rem;
+        background: #172554;
+        color: #dbeafe;
+        text-align: center;
+    }
+
+    footer p {
+        margin: 0.4rem 0;
+    }
+
+    footer p:first-child {
+        color: #fff;
+        font-size: 1.2rem;
+        letter-spacing: 0.04em;
+    }
+
+    footer small {
+        display: inline-block;
+        margin-top: 0.65rem;
+        color: #bfdbfe;
+    }
+
+    footer a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.45rem 0.9rem;
+        border: 1px solid rgb(191 219 254 / 35%);
+        border-radius: 999px;
+        background: rgb(255 255 255 / 8%);
+        color: #fff;
+        font-weight: 650;
+        text-decoration: none;
+        transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+    }
+
+    footer a::before {
+        content: "↗";
+        font-size: 0.9em;
+    }
+
+    footer a:hover {
+        transform: translateY(-1px);
+        border-color: #93c5fd;
+        background: rgb(255 255 255 / 16%);
+    }
+
+    footer hr {
+        max-width: 760px;
+        margin: 1.25rem auto 0.6rem;
+        border: 0;
+        border-top: 1px solid rgb(219 234 254 / 22%);
+    }
+
     main {
         padding-bottom: 3rem;
+    }
+
+    main > p:first-of-type {
+        margin: 1.5rem 0 0.5rem;
+        color: var(--quiz-blue-dark);
+        font-size: clamp(1.35rem, 4vw, 1.75rem);
+        font-weight: 750;
+        text-align: center;
+    }
+
+    main > p:first-of-type + br + p {
+        margin: 0 0 1.5rem;
+        padding: 1.25rem 1.5rem;
+        border: 1px solid var(--quiz-border);
+        border-radius: 1rem;
+        background: var(--quiz-surface);
+        color: var(--quiz-muted);
+        box-shadow: 0 8px 24px rgb(30 64 120 / 6%);
+        text-align: center;
     }
 
     form,
@@ -240,18 +331,33 @@
 </style>
 
     <header>
-        <h1>Welcome To Quiz-App</h1>
+        <h1>QuizVerse</h1>
+        <p>Challenge Your Knowledge!</p>
+        <br>
+        <p>Think fast. Choose wisely. Discover how much you know.</p>
     </header>
 
     <main>
         {% block content %}
-        <p>Explore quizes on various topics</p>
+        <p>Welcome to QuizVerse!</p>
+        <br>
+        <p>Test your knowledge with fun and engaging multiple-choice questions covering general knowledge, science, geography, mathematics, and technology.
+        Choose your answers, navigate between questions, and see your final score when you finish. Every quiz is an opportunity to learn something new!</p>
 
         <form action="/quiz" method="post">
             <input type="submit" value="Quiz Page">
         </form>
         {% endblock %}
     </main>
+
+    <footer>
+        <p><b><center>QuizVerse</center></b></p>
+        <p><center>Keep learning. Keep exploring. Keep growing.</center></p>
+        <p><center>Built with Python, Flask, HTML & CSS.</center></p>
+        <small><a href="https://github.com/ayush102007-sys" target="_blank">GitHub</a></small>
+        <hr>
+        <small><center>© 2026 QuizVerse. Made with ❤️ for curious minds.</center></small>
+    </footer>
 
 </body>
 </html>
