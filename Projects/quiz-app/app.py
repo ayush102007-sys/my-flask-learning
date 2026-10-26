@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, session
 
 app = Flask(__name__)
+app.secret_key = "quiz-secret"
 
 quiz_database = [
     {
@@ -79,30 +80,78 @@ quiz_database = [
     "answer": "B"
 }
 ]
+
 options = ["A","B","C","D"]
 
 @app.route("/")
 def home():
     return render_template("base.html")
 
-@app.route("/quiz", methods = ["POST"])
+@app.route("/quiz", methods=["POST"])
 def quiz():
-    return render_template("quiz.html", question= quiz_database,options=options, enumerate= enumerate)
+    # Start a new quiz.
+    session["idx"] = 0
+    session["answers"] = {}
 
-@app.route("/submit", methods = ["POST"])
+    return render_template(
+        "quiz.html",
+        idx=session["idx"],
+        question=quiz_database,
+        options=options,
+    )
+
+
+@app.route("/submit", methods=["POST"])
 def submit():
+    # This route saves questions before the final one.
+    idx = session.get("idx", 0)
+    answer = request.form.get(f"q{idx + 1}")
+
+    answers = dict(session.get("answers", {}))
+    if answer is not None:
+        answers[f"q{idx + 1}"] = answer
+    session["answers"] = answers
+
+    # Move to the next question.
+    session["idx"] = idx + 1
+
+    return render_template(
+        "quiz.html",
+        idx=session["idx"],
+        question=quiz_database,
+        options=options,
+    )
+
+
+@app.route("/results", methods=["POST"])
+def result():
+    answers = dict(session.get("answers", {}))
+
+    # The final question is submitted directly to /results.
+    idx = session.get("idx", 0)
+    final_answer = request.form.get(f"q{idx + 1}")
+    if final_answer is not None:
+        answers[f"q{idx + 1}"] = final_answer
+    session["answers"] = answers
+
+    # Score the answers, treating a missing answer as unanswered.
     score = 0
     user_ans = []
+
     for index, ques in enumerate(quiz_database):
-        ans = request.form.get(f"q{index+1}")
-        if ans == ques["answer"]:
+        answer = answers.get(f"q{index + 1}")
+        user_ans.append(answer)
+
+        if answer == ques["answer"]:
             score += 1
-            user_ans.append(ans)
-        else:
-            user_ans.append(ans)
-    
-    percentage = (score/len(quiz_database)) * 100
-    return render_template("submit.html", score= score, percentage= percentage,
-                           questions = quiz_database, enumerate= enumerate, user_ans= user_ans)
-            
-        
+
+    percentage = (score / len(quiz_database)) * 100
+
+    return render_template(
+        "result.html",
+        score=score,
+        percentage=percentage,
+        questions=quiz_database,
+        user_ans=user_ans,
+        enumerate=enumerate,
+    )

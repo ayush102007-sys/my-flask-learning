@@ -93,12 +93,12 @@
         font-weight: 700;
     }
 
-    fieldset > p {
+    fieldset>p {
         margin: 0.25rem 0 1rem;
         font-weight: 600;
     }
 
-    fieldset > div {
+    fieldset>div {
         display: flex;
         align-items: center;
         gap: 0.7rem;
@@ -110,7 +110,7 @@
         transition: background 160ms ease, border-color 160ms ease;
     }
 
-    fieldset > div:hover {
+    fieldset>div:hover {
         border-color: #c7d9fb;
         background: #eff6ff;
     }
@@ -161,7 +161,7 @@
     input[type="submit"]:focus-visible,
     button:focus-visible,
     a:focus-visible,
-    input[type="radio"]:focus-visible + label {
+    input[type="radio"]:focus-visible+label {
         outline: 3px solid #93c5fd;
         outline-offset: 3px;
     }
@@ -213,6 +213,7 @@
     }
 
     @media (max-width: 520px) {
+
         header,
         main {
             width: min(100% - 1.25rem, 760px);
@@ -269,21 +270,38 @@
     </nav>
 </header>
 <main>
-    <form action="/submit" method="post">
-    <h2>Your Questions</h2>
-    {% for idx, qs in enumerate(question) %}
-    <fieldset>
-        <legend>Question {{ idx + 1 }}</legend>
-        <p>{{ qs["question"] }}</p>
-        {% for no, opt in enumerate(options) %}
-        <div>
-            <input type="radio" name="q{{idx+1}}" id="{{opt}}" value="{{opt}}">
-            <label for="{{opt}}">{{opt}}. {{ qs["options"][no] }}</label>
-        </div>
-        {% endfor %}
-    </fieldset>
-    {% endfor %}
-    <input type="submit" value="Submit">
+    <main>
+    {% if idx + 1 < question|length %}
+        <form action="{{ url_for('submit') }}" method="post">
+    {% else %}
+        <form action="{{ url_for('result') }}" method="post">
+    {% endif %}
+
+        <h2>Your Questions</h2>
+
+        <fieldset>
+            <legend>Question {{ idx + 1 }}</legend>
+            <p>{{ question[idx]["question"] }}</p>
+
+            {% for letter in options %}
+                <div>
+                    <input
+                        type="radio"
+                        name="q{{ idx + 1 }}"
+                        id="q{{ idx + 1 }}-{{ letter }}"
+                        value="{{ letter }}"
+                    >
+                    <label for="q{{ idx + 1 }}-{{ letter }}">
+                        {{ letter }}. {{ question[idx]["options"][loop.index0] }}
+                    </label>
+                </div>
+            {% endfor %}
+        </fieldset>
+
+        <input
+            type="submit"
+            value="{% if idx + 1 < question|length %}Next{% else %}Submit{% endif %}"
+        >
     </form>
 </main>
 {% endblock %}

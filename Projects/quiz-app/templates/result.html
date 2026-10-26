@@ -1,0 +1,310 @@
+{% extends "base.html" %}
+
+{% block title %}Result Page{% endblock %}
+
+{% block content %}
+<style>
+    :root {
+        color-scheme: light;
+        --quiz-blue: #2563eb;
+        --quiz-blue-dark: #1d4ed8;
+        --quiz-ink: #172554;
+        --quiz-muted: #64748b;
+        --quiz-border: #dbe5f1;
+        --quiz-surface: #ffffff;
+        --quiz-background: #f3f7fc;
+        --quiz-green: #15803d;
+        --quiz-green-bg: #f0fdf4;
+        --quiz-red: #b91c1c;
+        --quiz-red-bg: #fef2f2;
+    }
+
+    body {
+        margin: 0;
+        background: var(--quiz-background);
+        color: var(--quiz-ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.6;
+    }
+
+    header,
+    main {
+        width: min(100% - 2rem, 760px);
+        margin-inline: auto;
+    }
+
+    header {
+        padding-top: clamp(1.5rem, 5vw, 3rem);
+        text-align: center;
+    }
+
+    header p {
+        margin: 0 0 1.25rem;
+        color: var(--quiz-muted);
+        font-size: 0.95rem;
+    }
+
+    main {
+        padding-bottom: 3rem;
+    }
+
+    form,
+    .quiz-card,
+    .result-card,
+    .results-card {
+        padding: clamp(1.25rem, 4vw, 2rem);
+        border: 1px solid var(--quiz-border);
+        border-radius: 1.25rem;
+        background: var(--quiz-surface);
+        box-shadow: 0 12px 32px rgb(30 64 120 / 8%);
+    }
+
+    h1,
+    h2,
+    h3 {
+        color: var(--quiz-ink);
+        line-height: 1.25;
+    }
+
+    h2 {
+        margin: 0 0 1.5rem;
+        font-size: clamp(1.4rem, 4vw, 1.8rem);
+    }
+
+    fieldset {
+        min-width: 0;
+        margin: 0 0 1rem;
+        padding: 1.25rem;
+        border: 1px solid var(--quiz-border);
+        border-radius: 0.9rem;
+        background: #fbfdff;
+        transition: border-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    fieldset:hover {
+        border-color: #a9c5f7;
+        box-shadow: 0 5px 16px rgb(37 99 235 / 7%);
+    }
+
+    legend {
+        padding-inline: 0.45rem;
+        color: var(--quiz-blue-dark);
+        font-size: 0.9rem;
+        font-weight: 700;
+    }
+
+    fieldset > p {
+        margin: 0.25rem 0 1rem;
+        font-weight: 600;
+    }
+
+    fieldset > div {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        margin-top: 0.6rem;
+        padding: 0.75rem 0.85rem;
+        border: 1px solid transparent;
+        border-radius: 0.7rem;
+        background: #f5f8fd;
+        transition: background 160ms ease, border-color 160ms ease;
+    }
+
+    fieldset > div:hover {
+        border-color: #c7d9fb;
+        background: #eff6ff;
+    }
+
+    input[type="radio"] {
+        width: 1.05rem;
+        height: 1.05rem;
+        flex: 0 0 auto;
+        margin: 0;
+        accent-color: var(--quiz-blue);
+        cursor: pointer;
+    }
+
+    label {
+        flex: 1;
+        cursor: pointer;
+    }
+
+    input[type="submit"],
+    button,
+    .retry-button,
+    a.retry-button {
+        display: inline-flex;
+        min-height: 2.9rem;
+        align-items: center;
+        justify-content: center;
+        padding: 0.7rem 1.4rem;
+        border: 0;
+        border-radius: 0.7rem;
+        background: var(--quiz-blue);
+        color: #fff;
+        font: inherit;
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+    }
+
+    input[type="submit"]:hover,
+    button:hover,
+    .retry-button:hover,
+    a.retry-button:hover {
+        transform: translateY(-1px);
+        background: var(--quiz-blue-dark);
+        box-shadow: 0 7px 16px rgb(37 99 235 / 22%);
+    }
+
+    input[type="submit"]:focus-visible,
+    button:focus-visible,
+    a:focus-visible,
+    input[type="radio"]:focus-visible + label {
+        outline: 3px solid #93c5fd;
+        outline-offset: 3px;
+    }
+
+    /* Reusable result and answer-review styles. */
+    .score,
+    .percentage {
+        color: var(--quiz-blue-dark);
+        font-size: clamp(1.25rem, 4vw, 1.75rem);
+        font-weight: 800;
+    }
+
+    .question-review,
+    .review-item,
+    .answer-review {
+        margin-block: 0.85rem;
+        padding: 1rem 1.1rem;
+        border: 1px solid var(--quiz-border);
+        border-radius: 0.8rem;
+        background: #fbfdff;
+    }
+
+    .correct,
+    .correct-answer,
+    .status-correct {
+        border-color: #bbf7d0;
+        border-radius: 0.55rem;
+        background: var(--quiz-green-bg);
+        color: var(--quiz-green);
+    }
+
+    .incorrect,
+    .incorrect-answer,
+    .status-incorrect {
+        border-color: #fecaca;
+        border-radius: 0.55rem;
+        background: var(--quiz-red-bg);
+        color: var(--quiz-red);
+    }
+
+    .correct,
+    .incorrect,
+    .correct-answer,
+    .incorrect-answer,
+    .status-correct,
+    .status-incorrect {
+        padding: 0.7rem 0.9rem;
+        font-weight: 650;
+    }
+
+    .result-summary {
+        margin: 1.5rem auto;
+        padding: 1.25rem 1.5rem;
+        max-width: 620px;
+        border: 1px solid var(--quiz-border, #dbe3ee);
+        border-radius: 1rem;
+        background: linear-gradient(135deg, #fff 0%, var(--quiz-red-bg, #fff1f2) 100%);
+        box-shadow: 0 10px 28px rgba(15, 23, 42, 0.08);
+        text-align: center;
+    }
+
+    .result-summary p {
+        margin: 0.65rem 0;
+        color: var(--quiz-text, #263244);
+        line-height: 1.5;
+    }
+
+    .result-summary .submission-message {
+        color: var(--quiz-red, #b42336);
+        font-size: 1.15rem;
+        font-weight: 700;
+    }
+
+    .result-summary .quiz-score {
+        font-size: 1.05rem;
+    }
+
+    .result-summary .quiz-percentage {
+        margin-top: 0.9rem;
+        color: var(--quiz-red, #b42336);
+        font-size: 1.35rem;
+        font-weight: 750;
+    }
+
+    @media (max-width: 520px) {
+        header,
+        main {
+            width: min(100% - 1.25rem, 760px);
+        }
+
+        form,
+        .quiz-card,
+        .result-card,
+        .results-card {
+            border-radius: 1rem;
+        }
+
+        fieldset {
+            padding: 1rem;
+        }
+
+        input[type="submit"],
+        button,
+        .retry-button,
+        a.retry-button {
+            width: 100%;
+        }
+    }
+</style>
+
+<div class="result-summary">
+    <p class="submission-message">Answers submitted successfully!</p>
+    <p class="quiz-score"><b>Quiz Results</b> &mdash; {{ score }} / {{ questions|length }}</p>
+    <p class="quiz-percentage"><b>Percentage &mdash; {{ "%.0f"|format(percentage) }}%</b></p>
+</div>
+
+<hr>
+
+<h3><u>Answer Review</u></h3>
+
+{% for val, qs in enumerate(questions) %}
+<fieldset>
+    <legend>Question {{ val + 1 }}</legend>
+        <p>{{ qs["question"] }}</p>
+        <ol type="A">
+        {% for opt in (qs["options"]) %}
+            <li>{{ opt }}</li>
+        {% endfor %}
+        </ol>   
+        <p><b>Correct Answer :</b> {{ qs["answer"] }} </p>
+        {% if not user_ans[val] %}
+            <p><b>Your Answer :</b> Unanswered </p>
+        {% else %}
+            <p><b>Your Answer :</b> {{ user_ans[val] }} </p>
+        {% endif %}
+</fieldset>
+{% endfor %}
+
+<div>
+    <form action="/quiz" method="post">
+        <div>
+            <input type="submit" value="Try Again">
+        </div>
+    </form>
+</div>
+{% endblock %}
