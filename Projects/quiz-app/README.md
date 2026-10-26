@@ -7,6 +7,7 @@ A beginner-friendly quiz application built with **Python and Flask**. Users can 
 - Multiple-choice quiz with radio-button options
 - Displays the final score and percentage
 - Shows each question with its available options
+- Navigate each question one-by-one
 - Displays the user's answer alongside the correct answer
 - Identifies correct, incorrect, and unanswered questions
 - Retry option to attempt the quiz again
@@ -28,7 +29,7 @@ flask-quiz-app/
 ├── templates/
     ├── base.html
     ├── quiz.html
-    └── submit.html
+    └── result.html
 ├── requirements.txt
 ├── .gitignore
 └── README.md
@@ -59,9 +60,6 @@ flask run
 
 Open the local address shown in your terminal, usually `http://127.0.0.1:5000/`.
 
-## Screenshots
-
-Add screenshots of your quiz page and results page here once you have saved them in the `screenshots/` directory.
 
 ## What I Learned
 

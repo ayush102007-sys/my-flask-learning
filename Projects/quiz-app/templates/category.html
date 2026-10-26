@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block title %}Quiz Category Page{% endblock %}
+
+{% block content %}
+<style>
+    main {
+        max-width: 34rem;
+        margin: 4rem auto;
+        padding: clamp(1.5rem, 5vw, 3rem);
+        background: linear-gradient(145deg, #fff, #f8fbff);
+        border: 1px solid #e2e8f0;
+        border-radius: 1.25rem;
+        box-shadow: 0 1.25rem 3rem rgba(15, 23, 42, 0.12);
+    }
+
+    main h1 {
+        margin: 0 0 2rem;
+        color: #172554;
+        text-align: center;
+        font-size: clamp(1.6rem, 5vw, 2rem);
+        letter-spacing: -0.04em;
+    }
+
+    main form > div {
+        margin-bottom: 1.5rem;
+    }
+
+    main label {
+        display: block;
+        margin-bottom: 0.65rem;
+        color: #334155;
+        font-weight: 600;
+    }
+
+    main select,
+    main input[type="submit"] {
+        width: 100%;
+        min-height: 3.25rem;
+        padding: 0.8rem 1rem;
+        border: 1px solid #cbd5e1;
+        border-radius: 0.65rem;
+        font: inherit;
+    }
+
+    main select {
+        background: #fff;
+        color: #1e293b;
+        cursor: pointer;
+        transition: border-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    main select:focus-visible,
+    main input[type="submit"]:focus-visible {
+        outline: 3px solid rgba(37, 99, 235, 0.25);
+        outline-offset: 2px;
+    }
+
+    main select:focus-visible {
+        border-color: #2563eb;
+    }
+
+    main input[type="submit"] {
+        border: 0;
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+
+    main input[type="submit"]:hover {
+        background: linear-gradient(135deg, #1d4ed8, #1e40af);
+        box-shadow: 0 0.5rem 1rem rgba(37, 99, 235, 0.25);
+        transform: translateY(-1px);
+    }
+
+    header {
+        padding: 1rem 0;
+    }
+
+    header nav {
+        width: min(100% - 1.25rem, 760px);
+        margin: 0 auto;
+    }
+
+    header nav a {
+        display: inline-block;
+        padding: 0.55rem 1rem;
+        border-radius: 0.5rem;
+        background: #2563eb;
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background-color 0.2s ease;
+    }
+
+    header nav a:hover,
+    header nav a:focus-visible {
+        background: #1d4ed8;
+    }
+
+    @media (max-width: 40rem) {
+        main {
+            margin: 2rem 1rem;
+        }
+    }
+</style>
+
+<header>
+    <nav>
+        <a href="/">Home</a>
+    </nav>
+</header>
+
+<main>
+    <h1>Select The Topic</h1>
+
+    <form action="/quiz" method="post">
+    <div>
+        <label for="topics">Select Categories :</label>
+        <select name="topics" id="topics">
+
+            <option value="select" selected disabled>See Categories</option>
+            {% for key in lst.keys() %}
+            <option value="{{ key }}">{{ key }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    
+    <div>
+        <input type="submit" value="Start Quiz">
+    </div>
+    </form>
+</main>
+{% endblock %}
