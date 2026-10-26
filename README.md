@@ -80,7 +80,7 @@ A Flask web application that collects student details and subject-wise marks, th
 
 ### 2. Quiz App
 
-**Status:** Planned / In Progress
+**Status:** Completed
 
 A quiz application designed to practise Python logic and Flask form handling.
 
@@ -91,7 +91,9 @@ A quiz application designed to practise Python logic and Flask form handling.
 - Check answers and calculate a score.
 - Display the final result.
 
-**Project link:** Add the project link after creating it.
+**Project link:** https://quiz-verse-06d0.onrender.com/
+
+(Deployed on Render)
 
 ### 3. Portfolio Website
 
