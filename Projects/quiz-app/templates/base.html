@@ -258,6 +258,26 @@
         outline-offset: 3px;
     }
 
+    .home-actions {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .home-actions input[type="submit"] {
+        min-width: 10rem;
+        padding-inline: 1.75rem;
+        border-radius: 0.8rem;
+        background: linear-gradient(135deg, var(--quiz-blue), #4f46e5);
+        box-shadow: 0 6px 16px rgb(37 99 235 / 20%);
+    }
+
+    .home-actions input[type="submit"].signup-button {
+        background: linear-gradient(135deg, #7c3aed, #6d28d9);
+        box-shadow: 0 6px 16px rgb(124 58 237 / 20%);
+    }
+
     /* Reusable result and answer-review styles. */
     .score,
     .percentage {
@@ -347,9 +367,17 @@
         <p>Test your knowledge with fun and engaging multiple-choice questions covering general knowledge, science, geography, mathematics, and technology.
         Choose your answers, navigate between questions, and see your final score when you finish. Every quiz is an opportunity to learn something new!</p>
 
-        <form action="/category" method="post">
-            <input type="submit" value="Quiz Page">
+        <form action="/register" method="post">
+            <div class="home-actions">
+                <input type="submit" name="login" value="Login →">
+                <input class="signup-button" type="submit" name="signup" value="Sign Up →">
+            </div>
+
+        <div>
+            <p><b>Login/SignUp</b> before you go</p>
+        </div>
         </form>
+
         {% endblock %}
     </main>
 
