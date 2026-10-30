@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Register Page{% endblock %}
+
+{% block content %}
+<style>
+    main form input[type="text"] {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 28rem;
+        margin: 0.5rem 0 1rem;
+        padding: 0.85rem 1rem;
+        border: 1px solid #cbd5e1;
+        border-radius: 0.75rem;
+        background: #f8fafc;
+        color: #0f172a;
+        font: inherit;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    }
+
+    main form input[type="text"]:focus {
+        outline: none;
+        border-color: #6366f1;
+        background: #fff;
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.16);
+    }
+</style>
+<main>
+    {% if page == "login" %}
+    <p>LOGIN PAGE</p>
+    <br>
+    <form action="/database" method="post">
+        <fieldset>
+            <legend>Login to Your Account</legend>
+            <div>            
+                <label for="logged"><b>Registered Name</b></label>
+                <input type="text" name="logged" id="logged">
+            </div>
+            <div>
+                <input type="submit" name="action" value="Login">
+            </div>
+        </fieldset>
+    </form>
+    {% else %}
+    <p>SIGNUP PAGE</p>
+    <br>
+    <form action="/database" method="post">
+        <fieldset>
+            <legend>Create Your Account</legend>
+            <div>
+                <label for="user"><b>Your Name</b></label>
+                <input type="text" name="signed" id="signed">
+            </div>
+            <div>
+                <input type="submit" name="action" value="Create Account">
+            </div>
+        </fieldset>
+    </form>
+    {% endif %}
+</main>
+{% endblock %}

@@ -274,6 +274,7 @@
 
 <div class="result-summary">
     <p class="submission-message">Answers submitted successfully!</p>
+    <p class="user-name"><b>Player Name</b> &mdash; {{ name }}</p>
     <p class="quiz-score"><b>Quiz Results</b> &mdash; {{ score }} / {{ questions|length }}</p>
     <p class="quiz-percentage"><b>Percentage &mdash; {{ "%.0f"|format(percentage) }}%</b></p>
 </div>
@@ -301,7 +302,7 @@
 {% endfor %}
 
 <div>
-    <form action="/quiz" method="post">
+    <form action="/home">
         <div>
             <input type="submit" value="Try Again">
         </div>

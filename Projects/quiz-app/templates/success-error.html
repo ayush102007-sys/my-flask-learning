@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+
+{% block title %}Result Page{% endblock %}
+
+{% block content %}
+<style>
+	.account-success {
+		min-height: 60vh;
+		display: grid;
+		place-items: center;
+		padding: 2rem 1rem;
+		font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+	}
+
+	.account-success__card {
+		box-sizing: border-box;
+		width: min(100%, 34rem);
+		padding: 2.5rem 2rem;
+		text-align: center;
+		background: #fff;
+		border: 1px solid #e5e7eb;
+		border-radius: 1rem;
+		box-shadow: 0 12px 32px rgb(15 23 42 / 9%);
+	}
+
+	.account-success__icon {
+		width: 3.75rem;
+		height: 3.75rem;
+		display: grid;
+		place-items: center;
+		margin: 0 auto 1.25rem;
+		color: #15803d;
+		background: #dcfce7;
+		border-radius: 50%;
+		font-size: 2rem;
+		font-weight: 700;
+	}
+
+	.account-success h1 {
+		margin: 0 0 0.75rem;
+		color: #111827;
+		font-size: clamp(1.75rem, 5vw, 2.25rem);
+	}
+
+	.account-success p {
+		margin: 0 auto 1.5rem;
+		max-width: 27rem;
+		color: #4b5563;
+		line-height: 1.65;
+	}
+
+	.account-success__link {
+		display: inline-block;
+		padding: 0.8rem 1.25rem;
+		color: #fff;
+		background: #2563eb;
+		border-radius: 0.5rem;
+		font-weight: 600;
+		text-decoration: none;
+	}
+
+	.account-success__link:hover {
+		background: #1d4ed8;
+	}
+
+	.account-success__link:focus-visible {
+		outline: 3px solid #93c5fd;
+		outline-offset: 3px;
+	}
+
+	.user-not-found {
+		min-height: 60vh;
+		display: grid;
+		place-items: center;
+		padding: 2rem 1rem;
+		font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+	}
+
+	.user-not-found__card {
+		box-sizing: border-box;
+		width: min(100%, 34rem);
+		padding: 2.5rem 2rem;
+		text-align: center;
+		background: #fff;
+		border: 1px solid #fecaca;
+		border-radius: 1rem;
+		box-shadow: 0 12px 32px rgb(15 23 42 / 9%);
+	}
+
+	.user-not-found__icon {
+		width: 3.75rem;
+		height: 3.75rem;
+		display: grid;
+		place-items: center;
+		margin: 0 auto 1.25rem;
+		color: #b91c1c;
+		background: #fee2e2;
+		border-radius: 50%;
+		font-size: 2rem;
+		font-weight: 700;
+	}
+
+	.user-not-found h1 {
+		margin: 0 0 0.75rem;
+		color: #111827;
+		font-size: clamp(1.75rem, 5vw, 2.25rem);
+	}
+
+	.user-not-found p {
+		margin: 0 auto 1.5rem;
+		max-width: 27rem;
+		color: #4b5563;
+		line-height: 1.65;
+	}
+
+	.user-not-found__link {
+		display: inline-block;
+		padding: 0.8rem 1.25rem;
+		color: #fff;
+		background: #dc2626;
+		border-radius: 0.5rem;
+		font-weight: 600;
+		text-decoration: none;
+	}
+
+	.user-not-found__link:hover {
+		background: #b91c1c;
+	}
+
+	.user-not-found__link:focus-visible {
+		outline: 3px solid #fca5a5;
+		outline-offset: 3px;
+	}
+</style>
+
+{% if account == "Not Found" %}
+<main class="user-not-found">
+	<section class="user-not-found__card" aria-labelledby="not-found-heading">
+		<div class="user-not-found__icon" aria-hidden="true">!</div>
+		<h1 id="not-found-heading">User not found</h1>
+		<p>We couldn't find an account matching those details. Please check your information and try again.</p>
+		<a class="user-not-found__link" href="/">Return to sign in</a>
+	</section>
+</main>
+{% else %}
+<main class="account-success">
+	<section class="account-success__card" aria-labelledby="success-heading">
+		<div class="account-success__icon" aria-hidden="true">✓</div>
+		<h1 id="success-heading">Account created successfully!</h1>
+		<p>Welcome to the Quiz-Verse. Your account is ready, and you can now sign in to start playing.</p>
+		<a class="account-success__link" href="/">Go to sign in</a>
+	</section>
+</main>
+{% endif %}
+{% endblock %}
