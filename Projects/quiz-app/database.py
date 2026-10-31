@@ -7,7 +7,7 @@ from pymongo import MongoClient
 load_dotenv()
 
 MONGO_URI = os.getenv("MONGO_URI")
-client = MongoClient(MONGO_URI)
+client = MongoClient(MONGO_URI, serverSelectionTimeoutMS = 5000)
 db = client["quiz-db"]
 collection = db["quiz-collection"]
 
@@ -37,4 +37,9 @@ def add_score(my_name, my_score, my_percentage):
         })
 
 if __name__ == "__main__":
-    print("Database connection testing")
+    try: 
+        client.admin.command("ping")
+        print("MongoDB Atlas connected successfully!")
+    except Exception as e:
+        print("Connection failed:", e)
+    
