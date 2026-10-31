@@ -31,7 +31,7 @@ def db():
     if request.form.get("action") == "Login":
         logged_user = request.form.get("logged")
         user_name = database.user_check(logged_user)
-        if logged_user == user_name:
+        if (logged_user.strip()) == user_name:
             session["username"] = logged_user
             return render_template("category.html", lst = quiz_list, name = logged_user)
         else:
