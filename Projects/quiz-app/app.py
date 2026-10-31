@@ -7,8 +7,11 @@ app.secret_key = "quiz-secret"
 
 options = ["A","B","C","D"]
 
-@app.route("/")
+@app.route("/", methods= ["GET","POST"])
 def base():
+    if request.method == "POST":
+        return render_template("base.html")
+
     return render_template("base.html")
 
 @app.route("/home")
@@ -29,15 +32,15 @@ def register():
 @app.route("/database", methods= ["POST"])
 def db():
     if request.form.get("action") == "Login":
-        logged_user = request.form.get("logged")
+        logged_user = (request.form.get("logged")).strip()
         user_name = database.user_check(logged_user)
-        if (logged_user.strip()) == user_name:
+        if logged_user == user_name:
             session["username"] = logged_user
             return render_template("category.html", lst = quiz_list, name = logged_user)
         else:
             return render_template("success-error.html", account = "Not Found")
     else:
-        username = request.form.get("signed")
+        username = (request.form.get("signed")).strip()
         database.add_user(username)
         return render_template("success-error.html", account = "Created")
 

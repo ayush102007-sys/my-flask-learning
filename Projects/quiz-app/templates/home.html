@@ -61,6 +61,24 @@
 		outline-offset: 4px;
 	}
 
+	.quiz-home .sign-out-form {
+		margin-top: 16px;
+	}
+
+	.quiz-home .sign-out-form input[type="submit"] {
+		padding: 10px 22px;
+		color: #6546c4;
+		font-size: 0.95rem;
+		background: transparent;
+		border: 1px solid #b5a4f0;
+		box-shadow: none;
+	}
+
+	.quiz-home .sign-out-form input[type="submit"]:hover {
+		color: #fff;
+		background: #5034a8;
+	}
+
 	@media (max-width: 600px) {
 		.quiz-home {
 			margin: 24px 16px;
@@ -76,5 +94,9 @@
 	<form action="/category" method="post">
 		<input type="submit" value="Explore Quizzes">
 	</form>
+	<form class="sign-out-form" action="/" method="post">
+		<input type="submit" value="Sign Out">
+	</form>
+	
 </main>
 {% endblock %}

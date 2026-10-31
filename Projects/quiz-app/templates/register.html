@@ -34,13 +34,15 @@
             <legend>Login to Your Account</legend>
             <div>            
                 <label for="logged"><b>Registered Name</b></label>
-                <input type="text" name="logged" id="logged">
+                <input type="text" name="logged" id="logged" required>
             </div>
             <div>
                 <input type="submit" name="action" value="Login">
+                <input type="submit" name="back" value="Back" form="login-back-form">
             </div>
         </fieldset>
     </form>
+    <form id="login-back-form" action="/"></form>
     {% else %}
     <p>SIGNUP PAGE</p>
     <br>
@@ -49,13 +51,15 @@
             <legend>Create Your Account</legend>
             <div>
                 <label for="user"><b>Your Name</b></label>
-                <input type="text" name="signed" id="signed">
+                <input type="text" name="signed" id="signed" required>
             </div>
             <div>
                 <input type="submit" name="action" value="Create Account">
+                <input type="submit" name="back" value="Back" form="signup-back-form">
             </div>
         </fieldset>
     </form>
+    <form id="signup-back-form" action="/"></form>
     {% endif %}
 </main>
 {% endblock %}
